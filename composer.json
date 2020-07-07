@@ -1,5 +1,5 @@
 {
     "require": {
-        "monolog/monolog": "1.0.*"
+        "components/jquery": "3.4.x"
     }
 }
