@@ -1,5 +1,5 @@
 {
-    "name" : "meiko-set-copy-job-generator",
+    "name" : "meiko-set/copy-job-generator",
     "description":"Simple script generator",
     "require": {
         "components/jquery": "3.4.x",
