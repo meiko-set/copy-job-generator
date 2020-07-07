@@ -1,5 +1,9 @@
 {
     "require": {
-        "components/jquery": "3.4.x"
+        "components/jquery": "3.4.x",
+        "twbs/bootstrap": "^4.5"
+    },
+    "config": {
+        "vendor-dir": "src/vendor"
     }
 }

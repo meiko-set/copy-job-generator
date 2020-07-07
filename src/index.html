@@ -1,14 +1,14 @@
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="de-de">
 
 <head>
   <meta charset="utf-8">
-  <title></title>
-  <meta name="description" content="">
+  <title>COPY JOB GENERATOR</title>
+  <meta name="description" content="COPY JOB GENERATOR - Generate a copy script/batch">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta property="og:title" content="">
-  <meta property="og:type" content="">
+  <meta property="og:title" content="COPY JOB GENERATOR">
+  <meta property="og:type" content="CODE GENERATOR">
   <meta property="og:url" content="">
   <meta property="og:image" content="">
 
@@ -17,25 +17,72 @@
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/main.css">
 
   <meta name="theme-color" content="#fafafa">
 </head>
 
-<body>
+<body class="py-4">
+  <div class="container">
 
-  <!-- Add your site or application content here -->
-  <p>Hello world! This is HTML5 Boilerplate.</p>
+  <h1>COPY JOB GENERATOR</h1>
+  <p class="lead">Generates a simple copy script.</p>
+
+  <form>
+    <div class="form-group row">
+      <label for="inputAuthor" class="col-sm-2 col-form-label">Author</label>
+      <div class="col-sm-10">
+        <input type="input" class="form-control" id="inputAuthor" name="author">
+      </div>
+    </div>
+    <fieldset class="form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Language</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="language" id="languageBatch" value="Batch" checked>
+            <label class="form-check-label" for="languageBatch">
+              Windows Batch
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="language" id="languagePowershell" value="Powershell">
+            <label class="form-check-label" for="languagePowershell">
+              Windows PowerShell
+            </label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+    <div class="form-group row">
+      <div class="col-sm-2">Optionen</div>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="userInfos" name="userInfos">
+          <label class="form-check-label" for="userInfos">
+            Print user infos
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button id="submit" type="button" class="btn btn-primary">Generate</button>
+      </div>
+    </div>
+  </form>
+
+  <div id="output" class="output hide">
+
+  </div>
+
   <script src="js/vendor/modernizr-3.11.2.min.js"></script>
   <script src="js/plugins.js"></script>
+  <script src="vendor/components/jquery/jquery.min.js"></script>
+  <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
 
-  <!-- Google Analytics: change UA-XXXXX-Y to be your site's ID. -->
-  <script>
-    window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
-    ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-  </script>
-  <script src="https://www.google-analytics.com/analytics.js" async></script>
 </body>
 
 </html>
