@@ -41,14 +41,14 @@
         <legend class="col-form-label col-sm-2 pt-0">Language</legend>
         <div class="col-sm-10">
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="language" id="languageBatch" value="Batch" checked>
-            <label class="form-check-label" for="languageBatch">
+            <input class="form-check-input language" type="radio" name="language" id="inputLanguageBatch" value="Batch" checked>
+            <label class="form-check-label" for="inputLanguageBatch">
               Windows Batch
             </label>
           </div>
           <div class="form-check">
-            <input class="form-check-input" type="radio" name="language" id="languagePowershell" value="Powershell">
-            <label class="form-check-label" for="languagePowershell">
+            <input class="form-check-input language" type="radio" name="language" id="inputLanguagePowershell" value="Powershell">
+            <label class="form-check-label" for="inputLanguagePowershell">
               Windows PowerShell
             </label>
           </div>
@@ -59,13 +59,32 @@
       <div class="col-sm-2">Optionen</div>
       <div class="col-sm-10">
         <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="userInfos" name="userInfos">
-          <label class="form-check-label" for="userInfos">
+          <input class="form-check-input" type="checkbox" id="inputUserInfos" name="userInfos">
+          <label class="form-check-label" for="inputUserInfos">
             Print user infos
           </label>
         </div>
       </div>
     </div>
+    <fieldset class="batch-option-group form-group hide">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0">Batch-Optionen</legend>
+        <div class="col-sm-10">
+          <div class="form-check">
+            <input class="form-check-input batch-options" type="radio" name="batch-options" id="inputBatchOptionXcopy" value="Xcopy" checked>
+            <label class="form-check-label" for="inputBatchOptionXcopy">
+              XCOPY
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input batch-options" type="radio" name="batch-options" id="inputBatchOptionRobocopy" value="Robocopy">
+            <label class="form-check-label" for="inputBatchOptionRobocopy">
+              ROBOCOPY
+            </label>
+          </div>
+        </div>
+      </div>
+    </fieldset>
     <div class="form-group row">
       <div class="col-sm-10">
         <button id="submit" type="button" class="btn btn-primary">Generate</button>
