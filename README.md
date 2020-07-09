@@ -7,8 +7,12 @@ Little webpage, how generate a copy batch script
 
 Install composer
 
-## Download
+### Download
 
 * Download project files
 * Unzip
 * Use a webserver to display src/index.html
+
+### Composer Update
+
+<pre>composer update</pre>
