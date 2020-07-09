@@ -5,69 +5,48 @@ function CopyJob() {
   // default options
   this.defaultOptions={
     'author':'Anonymous',
+    'source':'',
+    'destination':'',
     'language':'Batch',
     'userInfos':false,
-    'batchOptions':'Xcopy'
+    'batchOptions':'Xcopy'    
   };
   this.options=Object.assign({}, this.defaultOptions);
 }
 CopyJob.prototype.init = function() {
   var ths=this;
   /* radio click listener */
-  //this.getLanguageElements().on('change', {context:this}, this.setBatchOptionsVisibilityEventHandler);
-  //this.getLanguageElements().change(this.setBatchOptionsVisibility)
   this.getLanguageElements().on('change', $.proxy(this.setBatchOptionsVisibility, this));
 
   /* form click listener */
-  this.getSubmitElement().click(function() {
-    ths.submitForm();
+  this.getSubmitElement().click(function() { ths.submitForm(); });
+  this.getLanguageSelectorElements().click(function() {
+    $.i18n({locale:$(this).data('lang')});
+    $('*[data-i18n]').i18n();
   });
 
   this.setBatchOptionsVisibility();
 }
 /* some element getters */
-CopyJob.prototype.getFormElement = function() {
-  return $('form');
-}
-CopyJob.prototype.getAuthorElement = function() {
-  return $('#inputAuthor');
-}
-CopyJob.prototype.getOutputElement = function() {
-  return $('#output');
-}
-CopyJob.prototype.getLanguageBatchElement = function() {
-  return $('#inputLanguageBatch');
-}
-CopyJob.prototype.getUserInfoElement = function() {
-  return $('#inputUserInfos');
-}
-CopyJob.prototype.getLanguagePowershellElement = function() {
-  return $('#inputLanguagePowershell');
-}
-CopyJob.prototype.getLanguageElements = function() {
-  return $('input[type="radio"].language');
-}
-CopyJob.prototype.getBatchOptionXcopyElement = function() {
-  return $('#inputBatchOptionXcopy');
-}
-CopyJob.prototype.getBatchOptionRobocopyElement = function() {
-  return $('#inputBatchOptionRobocopy');
-}
-CopyJob.prototype.getSubmitElement = function() {
-  return $('#submit');
-}
-CopyJob.prototype.isBatch = function() {
-  return this.options.language==this.getLanguageBatchElement().val();
-}
-CopyJob.prototype.isBatchXcopy = function() {
-  return this.options.batchOptions==this.getBatchOptionXcopyElement().val();
-}
-CopyJob.prototype.isBatchRobocopy = function() {
-  return this.options.batchOptions==this.getBatchOptionRobocopyElement().val();
-}
-CopyJob.prototype.isPowershell = function() {
-  return this.options.language==this.getLanguagePowershellElement().val();
-}
+CopyJob.prototype.getLanguageSelectorElements = function() { return $('#language-selector a'); }
+CopyJob.prototype.getFormElement = function() { return $('form'); }
+CopyJob.prototype.getAuthorElement = function() { return $('#inputAuthor'); }
+CopyJob.prototype.getSourceElement = function() { return $('#inputSource'); }
+CopyJob.prototype.getDestinationElement = function() { return $('#inputDestination'); }
+CopyJob.prototype.getOutputElement = function() { return $('#output'); }
+CopyJob.prototype.getLanguageBatchElement = function() { return $('#inputLanguageBatch'); }
+CopyJob.prototype.getUserInfoElement = function() { return $('#inputUserInfos'); }
+CopyJob.prototype.getLanguagePowershellElement = function() { return $('#inputLanguagePowershell'); }
+CopyJob.prototype.getLanguageElements = function() { return $('input[type="radio"].language'); }
+CopyJob.prototype.getBatchOptionXcopyElement = function() { return $('#inputBatchOptionXcopy'); }
+CopyJob.prototype.getBatchOptionRobocopyElement = function() { return $('#inputBatchOptionRobocopy'); }
+CopyJob.prototype.getSubmitElement = function() { return $('#submit'); }
+CopyJob.prototype.getBatchXcopyOptionElements = function() { return $('input.batch-xcopy-options'); }
+
+CopyJob.prototype.isBatch = function() { return this.options.language==this.getLanguageBatchElement().val(); }
+CopyJob.prototype.isBatchXcopy = function() { return this.options.batchOptions==this.getBatchOptionXcopyElement().val(); }
+CopyJob.prototype.isBatchRobocopy = function() { return this.options.batchOptions==this.getBatchOptionRobocopyElement().val(); }
+CopyJob.prototype.isPowershell = function() { return this.options.language==this.getLanguagePowershellElement().val(); }
 
 /* submit form handler */
 CopyJob.prototype.submitForm = function() {
@@ -132,7 +111,13 @@ function XcopyGenerator(copyJobGeneratorBatch) {
   this.copyJobGeneratorBatch=copyJobGeneratorBatch;
 };
 XcopyGenerator.prototype.generate = function() {
-  return "xcopy";
+  var options=this.copyJobGeneratorBatch.copyJobGenerator.copyJob.getBatchXcopyOptionElements().filter(':checked');
+  var optStr='';
+  $.each(options, function(idx, el) {    
+    optStr+='/'+$(el).val()+' ';
+
+  });
+  return "XCOPY " + this.copyJobGeneratorBatch.copyJobGenerator.copyJob.options.source + " " + this.copyJobGeneratorBatch.copyJobGenerator.copyJob.options.destination + ' ' + optStr;
 }; 
 
 //-----------------------------------------------------------------------------
@@ -164,7 +149,7 @@ CopyJobGeneratorBatch.prototype.generate = function()
   if(this.copyJobGenerator.copyJob.options.userInfos==true)
   {
     content+='FOR /f "tokens=3 delims=\" %%i IN ("%USERPROFILE%") DO (SET user=%%i) 2>&1' + this.copyJobGenerator.getHtmlLineBreak();
-    content+=this.copyJobGenerator.getHtmlIndention(2) + 'ECHO User: %user%' + this.copyJobGenerator.getHtmlLineBreak();
+    content+=this.copyJobGenerator.getHtmlIndention(2) + 'ECHO User: %user%' + this.copyJobGenerator.getHtmlLineBreak(2);
   }
   content+=this.generator?this.generator.generate():null; 
   return content;
@@ -183,5 +168,14 @@ CopyJobGeneratorPowershell.prototype.generate = function() {
 //-----------------------------------------------------------------------------
 /* initialization */
 //-----------------------------------------------------------------------------
-var copyJob=new CopyJob();
-copyJob.init();
+$(function() {
+  
+  $.i18n({locale: 'de'}).load({
+    'de':'/languages/de.json', 'en':'/languages/en.json'}).done(function() {
+      $('*[data-i18n]').i18n();      
+
+  });
+  
+  var copyJob=new CopyJob();
+  copyJob.init();
+});

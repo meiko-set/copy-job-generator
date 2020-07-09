@@ -1,0 +1,21 @@
+{
+	"title": "Copy job generator",
+    "sub-title": "Generiert ein einfaches Kopierscript.",    
+    "author":"Autor",
+    "source":"Quellverzeichnis",
+    "destination":"Zielverzeichnis",
+    "language":"Sprache",
+    "options":"Optionen",
+    "batch-options":"Batch-Optionen",
+    "xcopy-options":"XCOPY-Optionen",
+    "windows-batch":"Windows Batch",
+    "windows-powershell":"Windows Powershell",
+    "print-user-infos":"Nutzer ausgeben?",
+    "xcopy":"XCOPY",
+    "robocopy":"ROBOCOPY",
+    "batchXcopyOptions-w":"Zeigt die folgende Meldung an und wartet auf die Antwort, bevor mit dem Kopieren von Dateien begonnen wird: <i>Drücken Sie eine beliebige Taste, um mit dem Kopieren von Dateien zu beginnen.</i>",
+    "batchXcopyOptions-p":"Sie werden aufgefordert, zu bestätigen, ob Sie die einzelnen Zieldateien erstellen möchten.",
+    "batchXcopyOptions-C":"Ignoriert Fehler.",
+    "batchXcopyOptions-v":"Überprüft jede Datei beim Schreiben in die Zieldatei, um sicherzustellen, dass die Zieldateien mit den Quelldateien identisch sind.",
+    "batchXcopyOptions-q":"Unterdrückt die Anzeige von xcopy-Meldungen."
+}

@@ -26,29 +26,42 @@
 <body class="py-4">
   <div class="container">
 
-  <h1>COPY JOB GENERATOR</h1>
-  <p class="lead">Generates a simple copy script.</p>
+  <div class="float-right" id="language-selector"><a href="javascript:;" data-lang="de">DE</a> | <a href="javascript:;" data-lang="en">EN</a></div>
+  <h1 data-i18n="title">COPY JOB GENERATOR</h1>
+  <p class="lead" data-i18n="sub-title">Generates a simple copy script.</p>
 
   <form>
     <div class="form-group row">
-      <label for="inputAuthor" class="col-sm-2 col-form-label">Author</label>
+      <label for="inputAuthor" class="col-sm-2 col-form-label" data-i18n="author">Author</label>
       <div class="col-sm-10">
-        <input type="input" class="form-control" id="inputAuthor" name="author">
+        <input type="input" class="form-control" id="inputAuthor" name="author" placeholder="Max">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputSource" class="col-sm-2 col-form-label" data-i18n="source">Source</label>
+      <div class="col-sm-10">
+        <input type="input" class="form-control" id="inputSource" name="source" placeholder="c:\source">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputDestination" class="col-sm-2 col-form-label" data-i18n="destination">Destination</label>
+      <div class="col-sm-10">
+        <input type="input" class="form-control" id="inputDestination" name="destination" placeholder="c:\destination">
       </div>
     </div>
     <fieldset class="form-group">
       <div class="row">
-        <legend class="col-form-label col-sm-2 pt-0">Language</legend>
+        <legend class="col-form-label col-sm-2 pt-0" data-i18n="language">Language</legend>
         <div class="col-sm-10">
           <div class="form-check">
             <input class="form-check-input language" type="radio" name="language" id="inputLanguageBatch" value="Batch" checked>
-            <label class="form-check-label" for="inputLanguageBatch">
+            <label class="form-check-label" for="inputLanguageBatch" data-i18n="windows-batch">
               Windows Batch
             </label>
           </div>
           <div class="form-check">
             <input class="form-check-input language" type="radio" name="language" id="inputLanguagePowershell" value="Powershell">
-            <label class="form-check-label" for="inputLanguagePowershell">
+            <label class="form-check-label" for="inputLanguagePowershell" data-i18n="windows-powershell">
               Windows PowerShell
             </label>
           </div>
@@ -56,35 +69,88 @@
       </div>
     </fieldset>
     <div class="form-group row">
-      <div class="col-sm-2">Optionen</div>
+      <div class="col-sm-2" data-i18n="options">Optionen</div>
       <div class="col-sm-10">
         <div class="form-check">
           <input class="form-check-input" type="checkbox" id="inputUserInfos" name="userInfos">
-          <label class="form-check-label" for="inputUserInfos">
+          <label class="form-check-label" for="inputUserInfos" data-i18n="print-user-infos">
             Print user infos
           </label>
         </div>
       </div>
     </div>
-    <fieldset class="batch-option-group form-group hide">
+    <fieldset class="batch-option-group form-group">
       <div class="row">
-        <legend class="col-form-label col-sm-2 pt-0">Batch-Optionen</legend>
+        <legend class="col-form-label col-sm-2 pt-0" data-i18n="batch-options">Batch-Optionen</legend>
         <div class="col-sm-10">
           <div class="form-check">
             <input class="form-check-input batch-options" type="radio" name="batchOptions" id="inputBatchOptionXcopy" value="Xcopy" checked>
-            <label class="form-check-label" for="inputBatchOptionXcopy">
+            <label class="form-check-label" for="inputBatchOptionXcopy" data-i18n="xcopy">
               XCOPY
             </label>
           </div>
           <div class="form-check">
             <input class="form-check-input batch-options" type="radio" name="batchOptions" id="inputBatchOptionRobocopy" value="Robocopy">
-            <label class="form-check-label" for="inputBatchOptionRobocopy">
+            <label class="form-check-label" for="inputBatchOptionRobocopy"data-i18n="robocopy">
               ROBOCOPY
             </label>
           </div>
         </div>
       </div>
     </fieldset>
+
+    <fieldset class="batch-xcopy-option-group form-group">
+      <div class="row">
+        <legend class="col-form-label col-sm-2 pt-0" data-i18n="xcopy-options">Xcopy-Optionen</legend>
+        <div class="col-sm-2">
+          <div class="form-check">
+            <input id="batchXcopyOptions-w" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="w">
+            <label class="form-check-label" for="batchXcopyOptions-w">
+              /w
+              <small class="form-text text-muted" data-i18n="[html]batchXcopyOptions-w">Zeigt die folgende Meldung an und wartet auf die Antwort, bevor mit dem Kopieren von Dateien begonnen wird:
+                <i>Drücken Sie eine beliebige Taste, um mit dem Kopieren von Dateien zu beginnen.</i></small>
+              </label>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-check">
+            <input id="batchXcopyOptions-p" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="p">
+            <label class="form-check-label" for="inputBatchOptionXcopy">
+              /p
+            </label>
+            <small class="form-text text-muted" data-i18n="batchXcopyOptions-p">Sie werden aufgefordert, zu bestätigen, ob Sie die einzelnen Zieldateien erstellen möchten.</small>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-check">
+            <input id="batchXcopyOptions-C" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="C">
+            <label class="form-check-label" for="inputBatchOptionXcopy">
+              /C
+            </label>
+            <small class="form-text text-muted" data-i18n="batchXcopyOptions-C">Ignoriert Fehler.</small>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-check">
+            <input id="batchXcopyOptions-v" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="v">
+            <label class="form-check-label" for="inputBatchOptionXcopy">
+             /v
+            </label>
+            <small class="form-text text-muted" data-i18n="batchXcopyOptions-v">Überprüft jede Datei beim Schreiben in die Zieldatei, um sicherzustellen, dass die Zieldateien mit den Quelldateien identisch sind.</small>
+          </div>
+        </div>
+        <div class="col-sm-2">
+          <div class="form-check">
+            <input id="batchXcopyOptions-q" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="q">
+            <label class="form-check-label" for="inputBatchOptionXcopy">
+              /q
+            </label>
+            <small class="form-text text-muted" data-i18n="batchXcopyOptions-q">Unterdrückt die Anzeige von xcopy -Meldungen.</small>
+          </div>
+        </div>
+      </div>
+    </fieldset>
+
     <div class="form-group row">
       <div class="col-sm-10">
         <button id="submit" type="button" class="btn btn-primary">Generate</button>
@@ -96,10 +162,18 @@
 
   </div>
 
-  <script src="js/vendor/modernizr-3.11.2.min.js"></script>
-  <script src="js/plugins.js"></script>
+  <script src="js/vendor/modernizr/modernizr-3.11.2.min.js"></script>
+  <script src="js/plugins.js"></script>  
   <script src="vendor/components/jquery/jquery.min.js"></script>
   <script src="vendor/twbs/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="js/vendor/CLDRPluralRuleParser/CLDRPluralRuleParser.js"></script>
+  <script src="js/vendor/jquery.i18n/jquery.i18n.js"></script>
+  <script src="js/vendor/jquery.i18n/jquery.i18n.parser.js"></script>
+  <script src="js/vendor/jquery.i18n/jquery.i18n.language.js"></script>
+  <script src="js/vendor/jquery.i18n/jquery.i18n.messagestore.js"></script>
+  <script src="js/vendor/jquery.i18n/jquery.i18n.fallbacks.js"></script>
+  <script src="js/vendor/jquery.i18n/jquery.i18n.emitter.js"></script>
+  <script src="js/vendor/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
   <script src="js/main.js"></script>
 
 </body>

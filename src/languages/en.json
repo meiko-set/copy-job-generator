@@ -1,0 +1,21 @@
+{
+	"title": "Copy job generator",
+	"sub-title": "A simple copy job generator",
+	"author":"Author",
+    "source":"Source directory",
+    "destination":"Target directory",
+    "language":"Language",
+    "options":"Options",
+    "batch-options":"Batch-Options",
+    "xcopy-options":"XCOPY-Options",
+    "windows-batch":"Windows Batch",
+    "windows-powershell":"Windows Powershell",
+    "print-user-infos":"Print user?",
+    "xcopy":"XCOPY",
+    "robocopy":"ROBOCOPY",
+	"batchXcopyOptions-w":"Displays the following message and waits for your response before starting to copy files: <i>Press any key to begin copying file(s)</i>",
+	"batchXcopyOptions-p":"Prompts you to confirm whether you want to create each destination file.",
+    "batchXcopyOptions-C":"Ignores errors.",
+    "batchXcopyOptions-v":"Verifies each file as it is written to the destination file to make sure that the destination files are identical to the source files.",
+    "batchXcopyOptions-q":"Suppresses the display of xcopy messages."
+}
