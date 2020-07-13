@@ -17,6 +17,7 @@ CopyJob.prototype.init = function() {
   var ths=this;
   /* radio click listener */
   this.getLanguageElements().on('change', $.proxy(this.setBatchOptionsVisibility, this));
+  this.getBatchOptionsElements().on('change', $.proxy(this.setBatchOptionsGroupVisibility, this));
 
   /* form click listener */
   this.getSubmitElement().click(function() { ths.submitForm(); });
@@ -28,20 +29,23 @@ CopyJob.prototype.init = function() {
   this.setBatchOptionsVisibility();
 }
 /* some element getters */
-CopyJob.prototype.getLanguageSelectorElements = function() { return $('#language-selector a'); }
-CopyJob.prototype.getFormElement = function() { return $('form'); }
 CopyJob.prototype.getAuthorElement = function() { return $('#inputAuthor'); }
-CopyJob.prototype.getSourceElement = function() { return $('#inputSource'); }
-CopyJob.prototype.getDestinationElement = function() { return $('#inputDestination'); }
-CopyJob.prototype.getOutputElement = function() { return $('#output'); }
-CopyJob.prototype.getLanguageBatchElement = function() { return $('#inputLanguageBatch'); }
-CopyJob.prototype.getUserInfoElement = function() { return $('#inputUserInfos'); }
-CopyJob.prototype.getLanguagePowershellElement = function() { return $('#inputLanguagePowershell'); }
-CopyJob.prototype.getLanguageElements = function() { return $('input[type="radio"].language'); }
-CopyJob.prototype.getBatchOptionXcopyElement = function() { return $('#inputBatchOptionXcopy'); }
+CopyJob.prototype.getBatchOptionsElements = function() { return $('input[type="radio"].batch-options'); }
+CopyJob.prototype.getBatchLanguageGroupElement = function() {return $('.batch-option-group'); }
 CopyJob.prototype.getBatchOptionRobocopyElement = function() { return $('#inputBatchOptionRobocopy'); }
-CopyJob.prototype.getSubmitElement = function() { return $('#submit'); }
+CopyJob.prototype.getBatchOptionXcopyElement = function() { return $('#inputBatchOptionXcopy'); }
 CopyJob.prototype.getBatchXcopyOptionElements = function() { return $('input.batch-xcopy-options'); }
+CopyJob.prototype.getBatchXcopyOptionGroupElement = function() { return $('.batch-xcopy-option-group'); }
+CopyJob.prototype.getDestinationElement = function() { return $('#inputDestination'); }
+CopyJob.prototype.getFormElement = function() { return $('form'); }
+CopyJob.prototype.getLanguageBatchElement = function() { return $('#inputLanguageBatch'); }
+CopyJob.prototype.getLanguageElements = function() { return $('input[type="radio"].language'); }
+CopyJob.prototype.getLanguagePowershellElement = function() { return $('#inputLanguagePowershell'); }
+CopyJob.prototype.getLanguageSelectorElements = function() { return $('#language-selector a'); }
+CopyJob.prototype.getOutputElement = function() { return $('#output'); }
+CopyJob.prototype.getSourceElement = function() { return $('#inputSource'); }
+CopyJob.prototype.getSubmitElement = function() { return $('#submit'); }
+CopyJob.prototype.getUserInfoElement = function() { return $('#inputUserInfos'); }
 
 CopyJob.prototype.isBatch = function() { return this.options.language==this.getLanguageBatchElement().val(); }
 CopyJob.prototype.isBatchXcopy = function() { return this.options.batchOptions==this.getBatchOptionXcopyElement().val(); }
@@ -73,9 +77,25 @@ CopyJob.prototype.submitForm = function() {
 CopyJob.prototype.setBatchOptionsVisibility = function(event) {
   var selectedEl=this.getLanguageElements().filter(':checked');
   if(selectedEl.val()==this.getLanguageBatchElement().val()) {
-    $('.batch-option-group').removeClass('hide');
+    //console.log('remove hide: setBatchOptionsVisibility');
+    this.getBatchLanguageGroupElement().removeClass('hide');
   } else {
-    $('.batch-option-group').addClass('hide');
+    //console.log('add hide: setBatchOptionsVisibility');
+    this.getBatchLanguageGroupElement().addClass('hide');
+  }
+  $.proxy(this.setBatchOptionsGroupVisibility, this, event)();
+  //this.setBatchOptionsGroupVisibility(event);
+}
+CopyJob.prototype.setBatchOptionsGroupVisibility = function(event) {
+  var selectedEl=this.getBatchOptionsElements().filter(':checked');
+  var isBatchActive=!this.getBatchLanguageGroupElement().hasClass('hide');
+  //console.log(isBatchActive);
+  if(isBatchActive && selectedEl.val()==this.getBatchOptionXcopyElement().val()) {
+    //console.log('remove hide');
+    this.getBatchXcopyOptionGroupElement().removeClass('hide');
+  } else {
+    //console.log('add hide');
+    this.getBatchXcopyOptionGroupElement().addClass('hide');
   }
 }
 
