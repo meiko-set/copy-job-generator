@@ -189,8 +189,15 @@ CopyJobGeneratorPowershell.prototype.generate = function() {
 /* initialization */
 //-----------------------------------------------------------------------------
 $(function() {
+
+  var userLang = navigator.language || navigator.userLanguage;  
+  var lang='de';
+  if(userLang.split('-')[0]=='de' || 
+     userLang.split('-')[0]=='en') {
+     lang=userLang.split('-')[0]; 
+  }
   
-  $.i18n({locale: 'de'}).load({
+  $.i18n({locale: lang}).load({
     'de':'/languages/de.json', 'en':'/languages/en.json'}).done(function() {
       $('*[data-i18n]').i18n();      
 
