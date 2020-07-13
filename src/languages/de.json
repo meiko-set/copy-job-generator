@@ -17,5 +17,14 @@
     "batchXcopyOptions-p":"Sie werden aufgefordert, zu bestätigen, ob Sie die einzelnen Zieldateien erstellen möchten.",
     "batchXcopyOptions-C":"Ignoriert Fehler.",
     "batchXcopyOptions-v":"Überprüft jede Datei beim Schreiben in die Zieldatei, um sicherzustellen, dass die Zieldateien mit den Quelldateien identisch sind.",
-    "batchXcopyOptions-q":"Unterdrückt die Anzeige von xcopy-Meldungen."
+    "batchXcopyOptions-q":"Unterdrückt die Anzeige von xcopy-Meldungen.",
+    "batchXcopyOptions-f":"Zeigt beim Kopieren Quell-und Ziel Dateinamen an.",
+    "batchXcopyOptions-l":"Zeigt eine Liste der Dateien an, die kopiert werden sollen.",
+    "batchXcopyOptions-g":"Erstellt entschlüsselte Ziel Dateien, wenn das Ziel keine Verschlüsselung unterstützt.",
+    "batchXcopyOptions-d":"Kopiert Quelldateien, die am oder nach dem angegebenen Datum geändert wurden. Wenn Sie keinen <i>mm-dd-yyyy-</i>Wert einschließen, kopiert xcopy alle <i>Quell</i>-Dateien, die neuer sind als vorhandene <i>Ziel</i>-Dateien. Diese Befehlszeilenoption ermöglicht es Ihnen, geänderte Dateien zu aktualisieren.",
+    "batchXcopyOptions-u":"Kopiert Dateien aus der Quelle , die nur auf dem Ziel vorhanden sind.",
+    "batchXcopyOptions-i":"Wenn die Quelle ein Verzeichnis ist oder Platzhalter enthält und das Ziel nicht vorhanden ist, wird von xcopy angenommen, dass das Ziel einen Verzeichnisnamen angibt und ein neues Verzeichnis erstellt. Anschließend kopiert xcopy alle angegebenen Dateien in das neue Verzeichnis. Standardmäßig werden Sie von xcopy aufgefordert, anzugeben, ob es sich bei dem Ziel um eine Datei oder ein Verzeichnis handelt.",
+    "batchXcopyOptions-s":"Kopiert Verzeichnisse und Unterverzeichnisse, es sei denn, Sie sind leer. Wenn Sie <strong>/s</strong> weglassen, funktioniert xcopy innerhalb eines einzelnen Verzeichnisses.",
+    "batchXcopyOptions-e":"Kopiert alle Unterverzeichnisse, auch wenn Sie leer sind. Verwenden Sie <strong>/e</strong> mit den Befehlszeilenoptionen <strong>/s</strong> und <strong>/t</strong>.",
+    "batchXcopyOptions-t":"Kopiert nur die Unterverzeichnisstruktur (d. h. die Struktur), keine Dateien. Um leere Verzeichnisse zu kopieren, müssen Sie die Befehlszeilenoption <strong>/e</strong> einschließen."
 }

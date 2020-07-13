@@ -35,6 +35,7 @@ CopyJob.prototype.getBatchLanguageGroupElement = function() {return $('.batch-op
 CopyJob.prototype.getBatchOptionRobocopyElement = function() { return $('#inputBatchOptionRobocopy'); }
 CopyJob.prototype.getBatchOptionXcopyElement = function() { return $('#inputBatchOptionXcopy'); }
 CopyJob.prototype.getBatchXcopyOptionElements = function() { return $('input.batch-xcopy-options'); }
+CopyJob.prototype.getBatchXcopyOptionDateElement = function() { return $('#batchXcopyOption-d-date'); }
 CopyJob.prototype.getBatchXcopyOptionGroupElement = function() { return $('.batch-xcopy-option-group'); }
 CopyJob.prototype.getDestinationElement = function() { return $('#inputDestination'); }
 CopyJob.prototype.getFormElement = function() { return $('form'); }
@@ -46,6 +47,7 @@ CopyJob.prototype.getOutputElement = function() { return $('#output'); }
 CopyJob.prototype.getSourceElement = function() { return $('#inputSource'); }
 CopyJob.prototype.getSubmitElement = function() { return $('#submit'); }
 CopyJob.prototype.getUserInfoElement = function() { return $('#inputUserInfos'); }
+
 
 CopyJob.prototype.isBatch = function() { return this.options.language==this.getLanguageBatchElement().val(); }
 CopyJob.prototype.isBatchXcopy = function() { return this.options.batchOptions==this.getBatchOptionXcopyElement().val(); }
@@ -77,24 +79,18 @@ CopyJob.prototype.submitForm = function() {
 CopyJob.prototype.setBatchOptionsVisibility = function(event) {
   var selectedEl=this.getLanguageElements().filter(':checked');
   if(selectedEl.val()==this.getLanguageBatchElement().val()) {
-    //console.log('remove hide: setBatchOptionsVisibility');
     this.getBatchLanguageGroupElement().removeClass('hide');
   } else {
-    //console.log('add hide: setBatchOptionsVisibility');
     this.getBatchLanguageGroupElement().addClass('hide');
   }
   $.proxy(this.setBatchOptionsGroupVisibility, this, event)();
-  //this.setBatchOptionsGroupVisibility(event);
 }
 CopyJob.prototype.setBatchOptionsGroupVisibility = function(event) {
   var selectedEl=this.getBatchOptionsElements().filter(':checked');
   var isBatchActive=!this.getBatchLanguageGroupElement().hasClass('hide');
-  //console.log(isBatchActive);
   if(isBatchActive && selectedEl.val()==this.getBatchOptionXcopyElement().val()) {
-    //console.log('remove hide');
     this.getBatchXcopyOptionGroupElement().removeClass('hide');
   } else {
-    //console.log('add hide');
     this.getBatchXcopyOptionGroupElement().addClass('hide');
   }
 }
@@ -133,9 +129,14 @@ function XcopyGenerator(copyJobGeneratorBatch) {
 XcopyGenerator.prototype.generate = function() {
   var options=this.copyJobGeneratorBatch.copyJobGenerator.copyJob.getBatchXcopyOptionElements().filter(':checked');
   var optStr='';
-  $.each(options, function(idx, el) {    
-    optStr+='/'+$(el).val()+' ';
-
+  var ths=this;
+  $.each(options, function(idx, el) 
+  {
+    var postfix=' ';
+    if($(el).val()=='d' && ths.copyJobGeneratorBatch.copyJobGenerator.copyJob.getBatchXcopyOptionDateElement().val()) {
+      postfix=':'+ths.copyJobGeneratorBatch.copyJobGenerator.copyJob.getBatchXcopyOptionDateElement().val()+' ';
+    }    
+    optStr+='/'+$(el).val()+postfix;
   });
   return "XCOPY " + this.copyJobGeneratorBatch.copyJobGenerator.copyJob.options.source + " " + this.copyJobGeneratorBatch.copyJobGenerator.copyJob.options.destination + ' ' + optStr;
 }; 
@@ -147,7 +148,7 @@ function RobocopyGenerator(copyJobGeneratorBatch) {
   this.copyJobGeneratorBatch=copyJobGeneratorBatch;
 };
 RobocopyGenerator.prototype.generate = function() {
-  return "robocopy";
+  return "ROBOCOPY - NOT IMPLEMENT YET";
 };  
 
 //-----------------------------------------------------------------------------
@@ -182,7 +183,7 @@ function CopyJobGeneratorPowershell(copyJobGenerator){
     this.copyJobGenerator=copyJobGenerator;    
 }
 CopyJobGeneratorPowershell.prototype.generate = function() {
-	return 'Hello ' + this.copyJobGenerator.copyJob.options.author + ',<br>' + 'You choise is: Windows Powershell' + '<br>' + 'with user infos: ' + this.copyJobGenerator.copyJob.options.userInfos;
+	return 'POWERSHELL - NOT IMPLEMENT YET';
 }
 
 //-----------------------------------------------------------------------------
@@ -198,10 +199,14 @@ $(function() {
   }
   
   $.i18n({locale: lang}).load({
-    'de':'/languages/de.json', 'en':'/languages/en.json'}).done(function() {
-      $('*[data-i18n]').i18n();      
+    'de':'/languages/de.json', 
+    'en':'/languages/en.json'}).done(function() {
+      $('*:not([data-i18n=""])').i18n();      
 
   });
+  
+
+ $('.datepicker').datepicker({format:'mm-dd-yyyy', 'todayBtn':true, 'todayHighlight':true});
   
   var copyJob=new CopyJob();
   copyJob.init();

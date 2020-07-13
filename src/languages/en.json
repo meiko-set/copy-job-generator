@@ -17,5 +17,14 @@
 	"batchXcopyOptions-p":"Prompts you to confirm whether you want to create each destination file.",
     "batchXcopyOptions-C":"Ignores errors.",
     "batchXcopyOptions-v":"Verifies each file as it is written to the destination file to make sure that the destination files are identical to the source files.",
-    "batchXcopyOptions-q":"Suppresses the display of xcopy messages."
+    "batchXcopyOptions-q":"Suppresses the display of xcopy messages.",
+    "batchXcopyOptions-f":"Displays source and destination file names while copying.",
+    "batchXcopyOptions-l":"Displays a list of files that are to be copied.",
+    "batchXcopyOptions-g":"Creates decrypted Destination files when the destination does not support encryption.",
+    "batchXcopyOptions-d":"Copies source files changed on or after the specified date only. If you do not include a <i>MM-DD-YYYY</i> value, xcopy copies all <i>Source</i> files that are newer than existing <i>Destination</i> files. This command-line option allows you to update files that have changed.",
+    "batchXcopyOptions-u":"Copies files from Source that exist on Destination only.",
+    "batchXcopyOptions-i":"If Source is a directory or contains wildcards and Destination does not exist, xcopy assumes Destination specifies a directory name and creates a new directory. Then, xcopy copies all specified files into the new directory. By default, xcopy prompts you to specify whether Destination is a file or a directory.",
+    "batchXcopyOptions-s":"Copies directories and subdirectories, unless they are empty. If you omit <strong>/s</strong>, xcopy works within a single directory.",
+    "batchXcopyOptions-e":"Copies all subdirectories, even if they are empty. Use <strong>/e</strong> with the <strong>/s</strong> and <strong>/t</strong> command-line options.",
+    "batchXcopyOptions-t":"Copies the subdirectory structure (that is, the tree) only, not files. To copy empty directories, you must include the <strong>/e</strong> command-line option."
 }
