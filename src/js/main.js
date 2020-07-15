@@ -26,6 +26,10 @@ CopyJob.prototype.init = function() {
     $('*[data-i18n]').i18n();
   });
 
+  /* xcopy add/remove buttons */
+  this.getBatchXcopyOptionsExcludeAddElement().on('click', $.proxy(this.addBatchXcopyOptionsExcludeElement, this));
+  this.getBatchXcopyOptionsExcludeRemoveElement().on('click', $.proxy(this.removeBatchXcopyOptionsExcludeElement, this));
+
   this.setBatchOptionsVisibility();
 }
 /* some element getters */
@@ -47,7 +51,9 @@ CopyJob.prototype.getOutputElement = function() { return $('#output'); }
 CopyJob.prototype.getSourceElement = function() { return $('#inputSource'); }
 CopyJob.prototype.getSubmitElement = function() { return $('#submit'); }
 CopyJob.prototype.getUserInfoElement = function() { return $('#inputUserInfos'); }
-
+CopyJob.prototype.getBatchXcopyOptionsExcludeAddElement = function() { return $('#batchXcopyOptions-exclude-add'); }
+CopyJob.prototype.getBatchXcopyOptionsExcludeRemoveElement = function() { return $('#batchXcopyOptions-exclude-remove'); }
+CopyJob.prototype.getBatchXcopyOptionsExcludeInputContainer = function() { return $('#batchXcopyOptions-exclude-input-container'); }
 
 CopyJob.prototype.isBatch = function() { return this.options.language==this.getLanguageBatchElement().val(); }
 CopyJob.prototype.isBatchXcopy = function() { return this.options.batchOptions==this.getBatchOptionXcopyElement().val(); }
@@ -94,6 +100,24 @@ CopyJob.prototype.setBatchOptionsGroupVisibility = function(event) {
     this.getBatchXcopyOptionGroupElement().addClass('hide');
   }
 }
+CopyJob.prototype.addBatchXcopyOptionsExcludeElement = function(event) {
+  var lastEl=this.getBatchXcopyOptionsExcludeInputContainer().find('.batchXcopyOptions-exclude-input:last');
+  var clone=lastEl.clone();
+  var cloneInputEl=$(clone).find('input');
+  cloneInputEl.val(null);
+  var idx=parseInt(cloneInputEl.attr('data-id'));
+  cloneInputEl.removeClass('batchXcopyOptions-exclude-input-'+idx);
+  idx++;
+  cloneInputEl.addClass('batchXcopyOptions-exclude-input-'+idx);
+  cloneInputEl.attr('data-id', idx);
+  this.getBatchXcopyOptionsExcludeInputContainer().append(clone);
+}
+CopyJob.prototype.removeBatchXcopyOptionsExcludeElement = function(event) {
+  var lastEl=this.getBatchXcopyOptionsExcludeInputContainer().find('.batchXcopyOptions-exclude-input:last');
+  if(parseInt(lastEl.find('input').attr('data-id'))>1) {
+    lastEl.remove();
+  }
+}
 
 //-----------------------------------------------------------------------------
 /* CopyJobGenerator */
@@ -130,14 +154,26 @@ XcopyGenerator.prototype.generate = function() {
   var options=this.copyJobGeneratorBatch.copyJobGenerator.copyJob.getBatchXcopyOptionElements().filter(':checked');
   var optStr='';
   var ths=this;
-  $.each(options, function(idx, el) 
-  {
+  $.each(options, function(idx, el) {
     var postfix=' ';
     if($(el).val()=='d' && ths.copyJobGeneratorBatch.copyJobGenerator.copyJob.getBatchXcopyOptionDateElement().val()) {
       postfix=':'+ths.copyJobGeneratorBatch.copyJobGenerator.copyJob.getBatchXcopyOptionDateElement().val()+' ';
     }    
     optStr+='/'+$(el).val()+postfix;
   });
+  var batchXcopyOptionsExcludeInputs=this.copyJobGeneratorBatch.copyJobGenerator.copyJob.getBatchXcopyOptionsExcludeInputContainer().find('input');
+  var addExclude=false;
+  var addExcludeStr='/exclude:';
+  $.each(batchXcopyOptionsExcludeInputs, function(idx, el) {
+    el=$(el);
+    if(el.val()) {
+      addExclude=true;
+      addExcludeStr+=el.val()+'+';
+    }
+  });
+  if(addExclude) {
+    optStr+=(addExcludeStr.substring(0, addExcludeStr.length - 1));
+  }
   return "XCOPY " + this.copyJobGeneratorBatch.copyJobGenerator.copyJob.options.source + " " + this.copyJobGeneratorBatch.copyJobGenerator.copyJob.options.destination + ' ' + optStr;
 }; 
 

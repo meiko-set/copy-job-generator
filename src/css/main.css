@@ -40,3 +40,7 @@
 .output pre {
   margin: 0;
 }
+
+.pad-fix {
+  padding-top:10px;
+}

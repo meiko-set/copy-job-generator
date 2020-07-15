@@ -4,9 +4,9 @@
 <head>
   <meta charset="utf-8">
   <title>COPY JOB GENERATOR</title>
+
   <meta name="description" content="COPY JOB GENERATOR - Generate a copy script/batch">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <meta property="og:title" content="COPY JOB GENERATOR">
   <meta property="og:type" content="CODE GENERATOR">
   <meta property="og:url" content="">
@@ -14,8 +14,6 @@
 
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="icon.png">
-  <!-- Place favicon.ico in the root directory -->
-
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="vendor/eternicode/bootstrap-datepicker/dist/css/bootstrap-datepicker3.min.css">
@@ -203,7 +201,7 @@
               <input id="batchXcopyOptions-u" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="u">
               <label class="form-check-label" for="batchXcopyOptions-u">
                 /u
-                <small class="form-text text-muted" data-i18n="batchXcopyOptions-u">Kopiert Dateien aus der Quelle , die nur auf dem Ziel vorhanden sind.</i></small>
+                <small class="form-text text-muted" data-i18n="batchXcopyOptions-u">Kopiert Dateien aus der Quelle , die nur auf dem Ziel vorhanden sind.</small>
                 </label>
             </div>
           </div>
@@ -245,6 +243,161 @@
           </div>
         </div>
 
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0">&nbsp;</legend>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-k" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="k">
+              <label class="form-check-label" for="batchXcopyOptions-k">
+                /k
+                <small class="form-text text-muted" data-i18n="batchXcopyOptions-k"></small>
+                </label>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-r" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="r">
+              <label class="form-check-label" for="batchXcopyOptions-r">
+                /r
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions-r"></small>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-h" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="h">
+              <label class="form-check-label" for="batchXcopyOptions-h">
+                /h
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions-h"></small>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-a" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="a">
+              <label class="form-check-label" for="batchXcopyOptions-a">
+                /a
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions-a"></small>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-m" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="m">
+              <label class="form-check-label" for="batchXcopyOptions-m">
+                /m
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions-m"></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0">&nbsp;</legend>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-n" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="n">
+              <label class="form-check-label" for="batchXcopyOptions-n">
+                /n
+                <small class="form-text text-muted" data-i18n="batchXcopyOptions-n"></small>
+                </label>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-o" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="o">
+              <label class="form-check-label" for="batchXcopyOptions-o">
+                /o
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions-o"></small>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-x" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="x">
+              <label class="form-check-label" for="batchXcopyOptions-x">
+                /x
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions-x"></small>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-y" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="y">
+              <label class="form-check-label" for="batchXcopyOptions-y">
+                /y
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions-y"></small>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions--y" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="-y">
+              <label class="form-check-label" for="batchXcopyOptions--y">
+                /-y
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions--y"></small>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0">&nbsp;</legend>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-z" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="z">
+              <label class="form-check-label" for="batchXcopyOptions-z">
+                /z
+                <small class="form-text text-muted" data-i18n="batchXcopyOptions-z"></small>
+                </label>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-b" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="b">
+              <label class="form-check-label" for="batchXcopyOptions-b">
+                /b
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions-b"></small>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-j" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="j">
+              <label class="form-check-label" for="batchXcopyOptions-j">
+                /j
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions-j"></small>
+            </div>
+          </div>
+          <div class="col-sm-2">
+            <div class="form-check">
+              <input id="batchXcopyOptions-?" class="form-check-input batch-xcopy-options" type="checkbox" name="batchXcopyOptions" value="?">
+              <label class="form-check-label" for="batchXcopyOptions-?">
+                /?
+              </label>
+              <small class="form-text text-muted" data-i18n="batchXcopyOptions-?"></small>
+            </div>
+          </div> 
+        </div>
+
+        <div class="row">
+          <legend class="col-form-label col-sm-2 pt-0"></legend>
+          <div class="col-sm-10">
+            /exclude
+            <small class="form-text text-muted" data-i18n="batchXcopyOptions-exclude"></small>
+            <a id="batchXcopyOptions-exclude-add" href="javascript:;" class="badge badge-success" data-i18n="batchXcopyOptions-exclude-add">+ Hinzufügen</a>
+            <a id="batchXcopyOptions-exclude-remove" href="javascript:;" class="badge badge-danger" data-i18n="batchXcopyOptions-exclude-remove">- Entfernen</a>
+
+            <div id="batchXcopyOptions-exclude-input-container">
+              <div class="input-group pad-fix batchXcopyOptions-exclude-input">
+                <input type="text" class="form-control batchXcopyOptions-exclude-input-1" placeholder="FileName" data-id="1">
+              </div>
+          </div>
+
+          </div>
+        </div>
+
       </fieldset>
 
       <div class="form-group row">
@@ -260,7 +413,7 @@
 
     <footer class="float-right">
       
-      Version: 0.1
+      Version: 0.0.1
 
     </footer>
   </div>
@@ -279,8 +432,6 @@
   <script src="js/vendor/jquery.i18n/jquery.i18n.emitter.js"></script>
   <script src="js/vendor/jquery.i18n/jquery.i18n.emitter.bidi.js"></script>
   <script src="js/main.js"></script>
-
-  
 
 </body>
 

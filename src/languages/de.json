@@ -26,5 +26,22 @@
     "batchXcopyOptions-i":"Wenn die Quelle ein Verzeichnis ist oder Platzhalter enthält und das Ziel nicht vorhanden ist, wird von xcopy angenommen, dass das Ziel einen Verzeichnisnamen angibt und ein neues Verzeichnis erstellt. Anschließend kopiert xcopy alle angegebenen Dateien in das neue Verzeichnis. Standardmäßig werden Sie von xcopy aufgefordert, anzugeben, ob es sich bei dem Ziel um eine Datei oder ein Verzeichnis handelt.",
     "batchXcopyOptions-s":"Kopiert Verzeichnisse und Unterverzeichnisse, es sei denn, Sie sind leer. Wenn Sie <strong>/s</strong> weglassen, funktioniert xcopy innerhalb eines einzelnen Verzeichnisses.",
     "batchXcopyOptions-e":"Kopiert alle Unterverzeichnisse, auch wenn Sie leer sind. Verwenden Sie <strong>/e</strong> mit den Befehlszeilenoptionen <strong>/s</strong> und <strong>/t</strong>.",
-    "batchXcopyOptions-t":"Kopiert nur die Unterverzeichnisstruktur (d. h. die Struktur), keine Dateien. Um leere Verzeichnisse zu kopieren, müssen Sie die Befehlszeilenoption <strong>/e</strong> einschließen."
+    "batchXcopyOptions-t":"Kopiert nur die Unterverzeichnisstruktur (d. h. die Struktur), keine Dateien. Um leere Verzeichnisse zu kopieren, müssen Sie die Befehlszeilenoption <strong>/e</strong> einschließen.",
+    "batchXcopyOptions-k":"Kopiert Dateien und behält das schreibgeschützte Attribut in den Ziel Dateien bei, sofern Sie in den Quell Dateien vorhanden sind. Standardmäßig entfernt xcopy das schreibgeschützte Attribut.",
+    "batchXcopyOptions-r":"Kopiert schreibgeschützte Dateien.",
+    "batchXcopyOptions-h":"Kopiert Dateien mit ausgeblendeten Attributen und Systemdatei Attributen. Xcopy kopiert standardmäßig keine ausgeblendeten oder Systemdateien.",
+    "batchXcopyOptions-a":"Kopiert nur Quell Dateien, deren Archivdatei Attribute festgelegt sind. /a ändert nicht das Archivdatei Attribut der Quelldatei. Weitere Informationen zum Festlegen des Attributs 'Archivdatei' mithilfe von atzbfinden Sie unter Zusätzliche Verweise.",
+    "batchXcopyOptions-m":"Kopiert Quell Dateien, deren Archivdatei Attribute festgelegt sind. Im Gegensatz zu /adeaktiviert /m die Attribute der Archivdatei in den Dateien, die in der Quelle angegeben sind. Weitere Informationen zum Festlegen des Attributs 'Archivdatei' mithilfe von atzbfinden Sie unter Zusätzliche Verweise.",
+    "batchXcopyOptions-n":"Erstellt Kopien mithilfe der kurzen NTFS-Datei-oder Verzeichnisnamen. /n ist erforderlich, wenn Sie Dateien oder Verzeichnisse von einem NTFS-Volume auf ein FAT-Volume kopieren oder wenn die Benennungs Konvention für FAT-Dateisystem (8,3 Zeichen) im Ziel Dateisystem erforderlich ist. Das Ziel Dateisystem kann FAT oder NTFS sein.",
+    "batchXcopyOptions-o":"Kopiert Dateibesitz-und freigegebene Informationen zur Zugriffs Steuerungs Liste (DACL).",
+    "batchXcopyOptions-x":"Kopiert Datei Überwachungs Einstellungen und SACL (System Access Control List)-Informationen (impliziert /o).",
+    "batchXcopyOptions-y":"Unterdrückt die Eingabeaufforderung, um zu bestätigen, dass Sie eine vorhandene Zieldatei überschreiben möchten.",
+    "batchXcopyOptions--y":"Fordert Sie auf zu bestätigen, dass Sie eine vorhandene Zieldatei überschreiben möchten.",
+    "batchXcopyOptions-z":"Kopiert über ein Netzwerk im neu startbaren Modus.",
+    "batchXcopyOptions-b":"Kopiert den symbolischen Link anstelle der Dateien. Dieser Parameter wurde in Windows Vista eingeführt.",
+    "batchXcopyOptions-j":"Kopiert Dateien ohne Pufferung. Empfohlen für sehr große Dateien. Dieser Parameter wurde in Windows Server 2008 R2 hinzugefügt.",
+    "batchXcopyOptions-?":"Zeigt die Hilfe an der Eingabeaufforderung an.",
+    "batchXcopyOptions-exclude":"Gibt eine Liste von Dateien an. Es muss mindestens eine Datei angegeben werden. Jede Datei enthält Such Zeichenfolgen mit jeder Zeichenfolge in einer separaten Zeile in der Datei. Wenn eine der Zeichen folgen einem beliebigen Teil des absoluten Pfads der zu kopierenden Datei entspricht, wird diese Datei nicht mehr kopiert. Wenn Sie z. b. die Zeichenfolge obj angeben, werden alle Dateien unter dem Verzeichnis obj oder alle Dateien mit der . obj -Erweiterung ausgeschlossen.",
+    "batchXcopyOptions-exclude-add":"Hinzufügen",
+    "batchXcopyOptions-exclude-remove":"Entfernen"
 }

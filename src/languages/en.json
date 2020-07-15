@@ -26,5 +26,22 @@
     "batchXcopyOptions-i":"If Source is a directory or contains wildcards and Destination does not exist, xcopy assumes Destination specifies a directory name and creates a new directory. Then, xcopy copies all specified files into the new directory. By default, xcopy prompts you to specify whether Destination is a file or a directory.",
     "batchXcopyOptions-s":"Copies directories and subdirectories, unless they are empty. If you omit <strong>/s</strong>, xcopy works within a single directory.",
     "batchXcopyOptions-e":"Copies all subdirectories, even if they are empty. Use <strong>/e</strong> with the <strong>/s</strong> and <strong>/t</strong> command-line options.",
-    "batchXcopyOptions-t":"Copies the subdirectory structure (that is, the tree) only, not files. To copy empty directories, you must include the <strong>/e</strong> command-line option."
+    "batchXcopyOptions-t":"Copies the subdirectory structure (that is, the tree) only, not files. To copy empty directories, you must include the <strong>/e</strong> command-line option.",
+    "batchXcopyOptions-k":"Copies files and retains the read-only attribute on Destination files if present on the Source files. By default, xcopy removes the read-only attribute.",
+    "batchXcopyOptions-r":"Copies read-only files.",
+    "batchXcopyOptions-h":"Copies files with hidden and system file attributes. By default, xcopy does not copy hidden or system files",
+    "batchXcopyOptions-a":"Copies only Source files that have their archive file attributes set. /a does not modify the archive file attribute of the source file. For information about how to set the archive file attribute by using attrib, see Additional References.",
+    "batchXcopyOptions-m":"Copies Source files that have their archive file attributes set. Unlike /a, /m turns off archive file attributes in the files that are specified in the source. For information about how to set the archive file attribute by using attrib, see Additional References.",
+    "batchXcopyOptions-n":"Creates copies by using the NTFS short file or directory names. /n is required when you copy files or directories from an NTFS volume to a FAT volume or when the FAT file system naming convention (that is, 8.3 characters) is required on the Destination file system. The Destination file system can be FAT or NTFS.",
+    "batchXcopyOptions-o":"Copies file ownership and discretionary access control list (DACL) information.",
+    "batchXcopyOptions-x":"Copies file audit settings and system access control list (SACL) information (implies /o).",
+    "batchXcopyOptions-y":"Suppresses prompting to confirm that you want to overwrite an existing destination file.",
+    "batchXcopyOptions--y":"Prompts to confirm that you want to overwrite an existing destination file.",
+    "batchXcopyOptions-z":"Copies over a network in restartable mode.",
+    "batchXcopyOptions-b":"Copies the symbolic link instead of the files. This parameter was introduced in Windows Vista.",
+    "batchXcopyOptions-j":"Copies files without buffering. Recommended for very large files. This parameter was added in Windows Server 2008 R2.",
+    "batchXcopyOptions-?":"Displays help at the command prompt.",
+    "batchXcopyOptions-exclude":"Specifies a list of files. At least one file must be specified. Each file will contain search strings with each string on a separate line in the file. When any of the strings match any part of the absolute path of the file to be copied, that file will be excluded from being copied. For example, specifying the string obj will exclude all files underneath the directory obj or all files with the .obj extension.",
+    "batchXcopyOptions-exclude-add":"Add",
+    "batchXcopyOptions-exclude-remove":"Remove"
 }

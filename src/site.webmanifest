@@ -1,6 +1,6 @@
 {
-  "short_name": "",
-  "name": "",
+  "short_name": "CJG",
+  "name": "Copy-Job-Generator",
   "icons": [{
     "src": "icon.png",
     "type": "image/png",
